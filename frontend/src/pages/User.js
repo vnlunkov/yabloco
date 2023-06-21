@@ -20,9 +20,6 @@ const User = () => {
             <p>
                 Это личный кабинет постоянного покупателя магазина
             </p>
-            <ul>
-                <li><Link to="/user/orders">История заказов</Link></li>
-            </ul>
             <Button onClick={handleLogout}>Выйти</Button>
         </Container>
     )

@@ -15,14 +15,13 @@ const publicRoutes = [
     {path: '/login', Component: Login},
     {path: '/signup', Component: Signup},
     {path: '/', Component: Login},
-    // {path: '/delivery', Component: Delivery},
-    // {path: '/contacts', Component: Contacts},
     {path: '*', Component: NotFound},
 ]
 
 const authRoutes = [
     {path: '/', Component: Home},
     {path: '/user', Component: User},
+    {path: '*', Component: NotFound},
 ]
 
 const adminRoutes = [
@@ -33,7 +32,7 @@ const AppRouter = observer(() => {
     const { user } = useContext(AppContext)
     return (
         <Routes>
-            {publicRoutes.map(({path, Component}) =>
+            {!user.isAuth && publicRoutes.map(({path, Component}) =>
                 <Route key={path} path={path} element={<Component />} />
             )}
             {user.isAuth && authRoutes.map(({path, Component}) =>
